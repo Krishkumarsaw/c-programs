@@ -27,10 +27,10 @@ void analysis(){
     for (int i = 0; i < s_no; i++) {
 
         tm[i] = 0;
-        printf("Student %d:\n", i + 1);
+        printf("\nStudent %d:\n", i + 1);
 
         for (int j = 0; j < sub_no; j++) {
-            printf("subject %d = %d\n",j+1, s_marks[i][j]);
+            printf("\nsubject %d = %d\n",j+1, s_marks[i][j]);
             tm[i] = tm[i] + s_marks[i][j];
         }
 
