@@ -22,15 +22,16 @@ void input(){
 
 void analysis(){
 
-    int tm[s_no], avgm[s_no], p_age[s_no];
+    int tm[s_no], avgm[s_no], p_age[s_no],student[s_no];;
 
     for (int i = 0; i < s_no; i++) {
 
         tm[i] = 0;
-        printf("\nStudent %d:\n", i + 1);
+        student[i] = i + 1;
+        printf("Student %d:\n", i + 1);
 
         for (int j = 0; j < sub_no; j++) {
-            printf("\nsubject %d = %d\n",j+1, s_marks[i][j]);
+            printf("subject %d = %d\n",j+1, s_marks[i][j]);
             tm[i] = tm[i] + s_marks[i][j];
         }
 
@@ -41,15 +42,97 @@ void analysis(){
         printf("Average marks = %d\n", avgm[i]);
         printf("Percentage = %d%%\n\n", p_age[i]);
     }
+
+    char yn;
+    printf("Do you want to sort Y/N -");
+    scanf(" %c",&yn); 
+    while(yn=='Y' || yn=='y'){
+        for (int i = 0; i < s_no - 1; i++) {
+
+            for (int j = 0; j < s_no - i - 1; j++) {
+
+                if (tm[j] < tm[j+1]) {
+                    int temp = tm[j];
+                    tm[j] = tm[j+1];
+                    tm[j+1] = temp;
+
+                    temp = student[j];
+                    student[j] = student[j + 1];
+                    student[j + 1] = temp;
+                        
+                    
+                }
+            }
+            break;
+        }
+        for(int i = 0; i<s_no; i++){
+        printf("Student %d total marks = %d\n",student[i],tm[i]);
+        }
+    
+        printf("\nHighest scorer -\n Student %d total marks = %d\n",student[0],tm[0]);
+        printf("\nLowest scorer -\n Student %d total marks = %d\n",student[s_no-1],tm[s_no-1]);
+        break;
+           
+         
+    }
+    
 }
-        
+
+
+void search(){
+    char yn;
+    int no;
+
+    while(1){
+        printf("Enter student no -");
+        scanf("%d",&no);
+        printf("marks :\n");
+        for(int i =0 ; i < sub_no; i++){
+            printf("subject %d = %d\n",i+1,s_marks[no-1][i]);
+        }
+        printf("Do you want to continue Y/N -");
+        scanf(" %c",&yn);
+
+        if(yn=='N' || yn=='n'){
+            break;
+        }
+    }
+}
         
 
 
 int main(){
-
+    
     input();
-    analysis();
+
+    while(1){
+
+        int c;
+        printf("\nOptions -\n1) Analysis & Sorting\n2) Searching\n3) Exit\n");
+        scanf("%d", &c);
+
+        switch (c){
+
+            case 1:
+                analysis();
+                break;
+
+            case 2:
+                search();
+                break;
+
+            case 3:
+                printf("Exiting program...\n");
+                break;
+
+            default:
+                printf("Wrong Choice !!!");
+        }
+
+        if(c == 3){
+            break;
+        }
+    }
 
     return 0;
 }
