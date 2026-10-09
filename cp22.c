@@ -21,7 +21,7 @@ uniondata  u1;
 
 void teststructure(){
     
-    printf("Testing structure:\n");
+    printf("\nTesting structure:\n");
 
     printf("enter int value of structure -");
     scanf("%d", &s1.integer);
@@ -45,7 +45,7 @@ void teststructure(){
 
 void testunion(){
 
-    printf("Testing union:\n");
+    printf("\nTesting union:\n");
 
     printf("enter int value of union -");
     scanf("%d", &u1.integer);
@@ -74,15 +74,3 @@ int main(){
     
     return 0;
 }
-
-
-
-
-
-
-
-
-    
-    
-
-   
